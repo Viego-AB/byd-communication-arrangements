@@ -1,0 +1,8 @@
+---
+applications:
+- name: byd-communication-arrangements
+  random-route: true
+  path: app
+  memory: 64M
+  buildpacks:
+  - nodejs_buildpack

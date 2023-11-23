@@ -1,0 +1,25 @@
+{
+    "name": "byd-communication-arrangements",
+    "version": "1.0.0",
+    "description": "Test CF endpoint for ByD communication",
+    "main": "index.js",
+    "engines": {
+        "node": "18.x.x"
+    },
+    "scripts": {
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Viego-AB/byd-communication-arrangements.git"
+    },
+    "author": "Viego AB",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Viego-AB/byd-communication-arrangements/issues"
+    },
+    "homepage": "https://github.com/Viego-AB/byd-communication-arrangements#readme",
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}
