@@ -1,0 +1,16 @@
+{
+    "xsappname": "byd-communication-arrangements",
+    "tenant-mode": "dedicated",
+    "description": "Test CF endpoint for ByD communication",
+    "scopes": [
+        {
+            "name": "uaa.user",
+            "description": "UAA"
+        }
+    ],
+    "role-templates": [],
+    "role-collections": [],
+    "oauth2-configuration": {
+        "credential-types": ["x509"]
+    }
+}

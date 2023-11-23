@@ -1,0 +1,61 @@
+_schema-version: "3.2"
+ID: byd-communication-arrangements
+version: 1.0.0
+resources:
+- name: byd-communication-arrangements-xsuaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: byd-communication-arrangements-xsuaa
+    service-plan: application
+
+- name: byd-communication-arrangements-destination
+  type: org.cloudfoundry.managed-service
+  requires:
+  - name: byd-communication-arrangements-srv
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Name: byd-communication-arrangements
+            Description: Test Endpoint
+            Authentication: NoAuthentication
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{byd-communication-arrangements-srv/url}
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: byd-communication-arrangements-destination
+    service-plan: lite
+
+modules:
+- name: byd-communication-arrangements
+  type: nodejs
+  path: app
+  provides:
+    - name: byd-communication-arrangements-srv
+      properties:
+        url: ${default-url}
+  requires:
+    - name: byd-communication-arrangements-xsuaa
+  parameters:
+    buildpack: nodejs_buildpack
+    stack: cflinuxfs4
+    memory: 64M
+
+- name: byd-communication-arrangements-approuter
+  type: nodejs
+  path: approuter
+  requires:
+    - name: byd-communication-arrangements-destination
+    - name: byd-communication-arrangements-xsuaa
+  parameters:
+    buildpack: nodejs_buildpack
+    stack: cflinuxfs4
+    memory: 64M

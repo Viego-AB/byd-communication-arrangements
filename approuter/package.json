@@ -1,0 +1,16 @@
+{
+    "name": "byd-communication-arrangements-approuter",
+    "version": "1.0.0",
+    "description": "byd-communication-arrangements-approuter",
+    "engines": {
+        "node": "18.x.x"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    },
+    "private": false,
+    "license": "ISC",
+    "dependencies": {
+        "@sap/approuter": "^14.4.0"
+    }
+}
