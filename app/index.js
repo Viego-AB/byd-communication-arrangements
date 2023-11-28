@@ -26,7 +26,7 @@ app.get('/test', function (req, res) {
         } else{
             //Get the subject common name
             const sHost = cert.subject.split("\n").find((x) => x.includes("CN=")).split("=")[1];
-            console.log(`Warning: Unauthorized host. ${sHost}`);
+            console.log(`Warning: Unauthorized host: ${sHost}`);
             res.status(401).json("Unauthorized");
         }   
     }    
