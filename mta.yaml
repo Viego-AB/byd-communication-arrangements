@@ -48,6 +48,9 @@ modules:
     buildpack: nodejs_buildpack
     stack: cflinuxfs4
     memory: 64M
+    routes:
+      - route:  awa-dev-dev-byd-communication-arrangements.mtls.cfapps.eu10.hana.ondemand.com
+        no-hostname: true
 
 - name: byd-communication-arrangements-approuter
   type: nodejs
